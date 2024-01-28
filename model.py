@@ -31,8 +31,12 @@ class Triangle:
             self.shader_program,[(self.vtx_buff_obj,'3f','in_position')])
         return vtx_array_obj
 
+    def get_vertex_data(self) -> np.ndarray:
+        """Convert vertex data to numpy array
 
-    def get_vertex_data(self) -> NDArray[Any]:
+        :return: `vertex data array`
+        :rtype: np.array
+        """
         vertex_data = [(-0.6,-0.8,0.0),(0.6,-0.8,0.0),(0.0,0.8,0.0)]
         vertex_data = np.array(vertex_data,dtype='f4')
         return vertex_data
@@ -62,7 +66,7 @@ class Triangle:
             fragment_shader = file.read()
 
         program = self.context.program(
-            vertex_shader=vertex_shader,
-            fragment_shader=fragment_shader)
+            vertex_shader   = vertex_shader,
+            fragment_shader = fragment_shader)
 
         return program
